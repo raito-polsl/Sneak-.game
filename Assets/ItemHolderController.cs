@@ -24,11 +24,23 @@ public class ItemHolderController : MonoBehaviour
                 selectedWeapon = 1;
                 SelectWeapon();
             }
+            else {
+                selectedWeapon = 0;
+                SelectWeapon();
+            }
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            selectedWeapon = 2;
-            SelectWeapon();
+            if (amount.bottles > 0)
+            {
+                selectedWeapon = 2;
+                SelectWeapon();
+            }
+            else
+            {
+                selectedWeapon = 0;
+                SelectWeapon();
+            }
         }
     }
     public void SelectWeapon() {

@@ -56,13 +56,24 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BottleCollision.cs" />
+    <Compile Include="Assets\MouseLook.cs" />
+    <Compile Include="Assets\GranadeImpact.cs" />
+    <Compile Include="Assets\ItemHolderController.cs" />
+    <Compile Include="Assets\DetectionCamera.cs" />
+    <Compile Include="Assets\LegAim.cs" />
+    <Compile Include="Assets\PlayerMovement.cs" />
+    <Compile Include="Assets\IKRaycast.cs" />
+    <Compile Include="Assets\PickUp.cs" />
+    <Compile Include="Assets\LegController.cs" />
+    <Compile Include="Assets\BlinkAbility.cs" />
+    <Compile Include="Assets\GranadeThrow.cs" />
     <Compile Include="Assets\Crouch.cs" />
     <Compile Include="Assets\CameraRot.cs" />
-    <Compile Include="Assets\PickUp.cs" />
-    <Compile Include="Assets\MouseLook.cs" />
-    <Compile Include="Assets\ItemHolderController.cs" />
-    <Compile Include="Assets\PlayerMovement.cs" />
-    <Compile Include="Assets\GranadeThrow.cs" />
+    <Compile Include="Assets\RigidbodyChildren.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\DevTex\readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

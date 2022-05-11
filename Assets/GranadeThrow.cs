@@ -8,6 +8,7 @@ public class GranadeThrow : MonoBehaviour
 
     public float throwForce = 40f;
     public GameObject granadeprefab;
+    public GameObject bottlePrefab;
     public ItemHolderController itemHolderController;
     public CharacterController characterController;
     public PickUp amount;
@@ -33,6 +34,19 @@ public class GranadeThrow : MonoBehaviour
                 }
             }
         }
+        if (Input.GetMouseButtonDown(0) && itemHolderController.selectedWeapon == 2)
+        {
+            if (amount.bottles > 0)
+            {
+                ThrowBottle();
+                amount.bottles--;
+                if (amount.bottles == 0)
+                {
+                    iHC.selectedWeapon = 0;
+                    iHC.SelectWeapon();
+                }
+            }
+        }
 
     }
 
@@ -41,6 +55,14 @@ public class GranadeThrow : MonoBehaviour
         Transform granadePosition = granade.transform;
 
         Rigidbody rb =  granade.GetComponent<Rigidbody>();
+        rb.AddForce(transform.forward * throwForce, ForceMode.VelocityChange);
+    }
+    void ThrowBottle()
+    {
+        GameObject bottle = Instantiate(bottlePrefab, transform.position, transform.rotation);
+        Transform bottlePosition = bottle.transform;
+
+        Rigidbody rb = bottle.GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * throwForce, ForceMode.VelocityChange);
     }
 }
