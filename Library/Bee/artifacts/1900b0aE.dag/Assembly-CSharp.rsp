@@ -359,6 +359,7 @@
 "Assets/Crouch.cs"
 "Assets/GranadeThrow.cs"
 "Assets/ItemHolderController.cs"
+"Assets/MainMenu.cs"
 "Assets/MouseLook.cs"
 "Assets/PickUp.cs"
 "Assets/PlayerMovement.cs"
