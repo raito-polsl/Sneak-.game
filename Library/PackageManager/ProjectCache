@@ -5,26 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-<<<<<<< Updated upstream
-      ticks: 637875975809291240
-    m_Hash: 1052720295
-=======
-      ticks: 637879782751030508
-    m_Hash: 1030465889
->>>>>>> Stashed changes
+      ticks: 637879806348846355
+    m_Hash: 1891605946
   m_LockFileStatus:
     m_FilePath: C:/Users/Kajo/Documents/GitHub/Sneak-.game/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-<<<<<<< Updated upstream
-      ticks: 637875975809301238
-    m_Hash: 1414695771
-=======
-      ticks: 637879782880153015
-    m_Hash: 3656152383
->>>>>>> Stashed changes
+      ticks: 637879806348846355
+    m_Hash: 2674032605
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -465,6 +455,7 @@ m_PackageAssets:
         - 1.14.13
         - 1.14.15
         - 1.14.16
+        - 1.14.17
         - 1.15.1
         - 1.15.4
         - 1.15.7
@@ -473,6 +464,7 @@ m_PackageAssets:
         - 1.15.13
         - 1.15.15
         - 1.15.16
+        - 1.15.17
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -485,6 +477,7 @@ m_PackageAssets:
         - 2.1.0-preview.6
         compatible:
         - 1.15.16
+        - 1.15.17
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -495,7 +488,7 @@ m_PackageAssets:
         - 2.1.0-preview.3
         - 2.1.0-preview.5
         - 2.1.0-preview.6
-        verified: 1.15.16
+        verified: 1.15.17
       dependencies:
       - name: com.unity.services.core
         version: 1.0.1
@@ -902,11 +895,8 @@ m_PackageAssets:
         - 4.1.2
         - 4.1.3
         - 4.1.4
-<<<<<<< Updated upstream
         - 4.2.0-pre.1
         - 4.2.0-pre.2
-=======
->>>>>>> Stashed changes
         compatible:
         - 0.0.3
         - 0.0.4
@@ -952,11 +942,8 @@ m_PackageAssets:
         - 4.1.2
         - 4.1.3
         - 4.1.4
-<<<<<<< Updated upstream
         - 4.2.0-pre.1
         - 4.2.0-pre.2
-=======
->>>>>>> Stashed changes
         verified: 4.1.4
       dependencies:
       - name: com.unity.ugui
@@ -1065,10 +1052,12 @@ m_PackageAssets:
         - 1.1.29
         - 1.1.30
         - 1.1.31
+        - 2.0.1-exp.1
         - 2.0.1-pre.12
         - 2.0.1-pre.18
         compatible:
         - 1.1.31
+        - 2.0.1-exp.1
         - 2.0.1-pre.12
         - 2.0.1-pre.18
         verified: 1.1.31
@@ -1529,7 +1518,6 @@ m_PackageAssets:
       errors: []
       versions:
         all:
-<<<<<<< Updated upstream
         - 1.0.0
         - 1.0.2
         - 1.0.3
@@ -1555,11 +1543,6 @@ m_PackageAssets:
         - 2.1.8
         - 2.1.9
         compatible:
-        - 2.1.8
-=======
-        - 2.1.9
-        compatible:
->>>>>>> Stashed changes
         - 2.1.9
         verified: 2.1.9
       dependencies:
@@ -1596,7 +1579,7 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637623088970000000
+      datePublishedTicks: 637812095140000000
       documentationUrl: 
       hasRepository: 1
       repository:
@@ -3443,6 +3426,8 @@ m_PackageAssets:
         - 1.1.0-pre.69
         - 1.2.0
         - 1.3.1
+        - 1.3.2
+        - 1.4.0
         compatible:
         - 1.0.1
         - 1.1.0-pre.7
@@ -3454,7 +3439,9 @@ m_PackageAssets:
         - 1.1.0-pre.69
         - 1.2.0
         - 1.3.1
-        verified: 1.3.1
+        - 1.3.2
+        - 1.4.0
+        verified: 1.3.2
       dependencies:
       - name: com.unity.modules.unitywebrequest
         version: 1.0.0

@@ -79,6 +79,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEditor.SpatialTracking
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Analytics", "Analytics.csproj", "{DBC9B3FD-4424-4DA8-9C54-5BA48A293D03}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{FB5F36D8-68E7-AB53-605D-AA8C4DBFD1D0}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEngine.UI", "UnityEngine.UI.Player.csproj", "{C917391D-9B7E-138D-70E2-F76DB616D25D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEngine.TestRunner", "UnityEngine.TestRunner.Player.csproj", "{4C01E6CB-B472-602E-24B8-585457351E56}"
@@ -283,6 +285,10 @@ Global
 		{DBC9B3FD-4424-4DA8-9C54-5BA48A293D03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBC9B3FD-4424-4DA8-9C54-5BA48A293D03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBC9B3FD-4424-4DA8-9C54-5BA48A293D03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB5F36D8-68E7-AB53-605D-AA8C4DBFD1D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB5F36D8-68E7-AB53-605D-AA8C4DBFD1D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB5F36D8-68E7-AB53-605D-AA8C4DBFD1D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB5F36D8-68E7-AB53-605D-AA8C4DBFD1D0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C917391D-9B7E-138D-70E2-F76DB616D25D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C917391D-9B7E-138D-70E2-F76DB616D25D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C917391D-9B7E-138D-70E2-F76DB616D25D}.Release|Any CPU.ActiveCfg = Release|Any CPU
