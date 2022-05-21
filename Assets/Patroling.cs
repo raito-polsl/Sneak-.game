@@ -11,11 +11,13 @@ public class Patroling : MonoBehaviour
     [SerializeField] private Transform movePosition4;
     [SerializeField] private Transform goToPlayer;
 
-
     bool canSee;
+    bool canSee2;
+    bool canSee3;
     private Transform enemyPosition;
     private int count = 0;
     private int nextPos;
+    
 
     private NavMeshAgent navMeshAgent;
     
@@ -33,11 +35,13 @@ public class Patroling : MonoBehaviour
     {
         enemyPosition = gameObject.transform;
             canSee = GetComponent<FieldOfView>().canSeePlayer;
-        
+            canSee2 = GetComponent<FieldOfView>().canSeePlayer2;
+            canSee3 = GetComponent<FieldOfView>().canSeePlayer3;
 
-        if (!canSee)
-        { 
-        switch (count)
+        if (!canSee && !canSee2 && !canSee3)
+        {
+            navMeshAgent.speed = 3.5f;
+            switch (count)
         { 
             case 0:
                 {
@@ -64,7 +68,7 @@ public class Patroling : MonoBehaviour
         if (enemyPosition.position.x == navMeshAgent.destination.x && enemyPosition.position.z == navMeshAgent.destination.z && count != nextPos)
         {
             count++;
-            if (count == 4)
+                if (count == 4)
                 count = 0;
             nextPos = count +1;
 
@@ -72,8 +76,10 @@ public class Patroling : MonoBehaviour
         }
         else 
         {
+          
             
             navMeshAgent.destination = goToPlayer.position;
+            navMeshAgent.speed = 0.5f; 
         }
 
 
