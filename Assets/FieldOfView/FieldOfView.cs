@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; 
+using UnityEngine.UI;
 
 public class FieldOfView : MonoBehaviour
 {
@@ -137,6 +139,8 @@ public class FieldOfView : MonoBehaviour
         if(detected >= 100)
         {
             Debug.Log("Przegrales");
+            Cursor.lockState = CursorLockMode.None; 
+            SceneManager.LoadScene("Lost", LoadSceneMode.Single);
         }
 
     }
