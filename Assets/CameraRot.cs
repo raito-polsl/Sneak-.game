@@ -16,15 +16,20 @@ public class CameraRot : MonoBehaviour
     void Start()
     {
         _rotation.x = 10;
+        
     }
 
     void Update()
     {
+        bool canSee = GetComponent<CameraFieldOfView>().canSeePlayer;
         if (Gameobject.eulerAngles.x <=5)
         {
             _rotation.x = -_rotation.x;
         }
-        transform.Rotate(_rotation * Time.deltaTime);
-        x = Gameobject.eulerAngles.x;
+        if (!canSee)
+        {
+            transform.Rotate(_rotation * Time.deltaTime);
+            x = Gameobject.eulerAngles.x;
+        }
     }
 }

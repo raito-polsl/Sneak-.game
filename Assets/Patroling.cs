@@ -17,7 +17,13 @@ public class Patroling : MonoBehaviour
     private Transform enemyPosition;
     private int count = 0;
     private int nextPos;
+    private GameObject ostatniaPozycja;
+    private bool once = false;
+    public CameraFieldOfView kameraWidzi;
+    private bool kameraWykryla = false;
     
+
+
 
     private NavMeshAgent navMeshAgent;
     
@@ -26,7 +32,7 @@ public class Patroling : MonoBehaviour
         nextPos = count + 1;
         navMeshAgent = GetComponent<NavMeshAgent>();
         canSee = false;
-
+        
 
     }
 
@@ -37,7 +43,11 @@ public class Patroling : MonoBehaviour
             canSee = GetComponent<FieldOfView>().canSeePlayer;
             canSee2 = GetComponent<FieldOfView>().canSeePlayer2;
             canSee3 = GetComponent<FieldOfView>().canSeePlayer3;
+            
 
+
+
+        if (!kameraWykryla) { 
         if (!canSee && !canSee2 && !canSee3)
         {
             navMeshAgent.speed = 3.5f;
@@ -74,16 +84,33 @@ public class Patroling : MonoBehaviour
 
         }
         }
-        else 
+        else
         {
           
             
             navMeshAgent.destination = goToPlayer.position;
             navMeshAgent.speed = 0.5f; 
         }
+        }
+        else
+            navMeshAgent.destination = ostatniaPozycja.transform.position;
 
-
-
+        if (kameraWidzi.detected >= 100 && kameraWidzi.canSeePlayer)
+        {
+            if (!ostatniaPozycja) { 
+            navMeshAgent.destination = goToPlayer.position;
+            once = true;
+        }
+        }
+        else if (kameraWidzi.detected < 100 && !canSee && once)
+        {
+            ostatniaPozycja = new GameObject("lastSeen");
+           
+            ostatniaPozycja.transform.position = goToPlayer.position;
+            kameraWykryla = true;
+            once = false;
+        }
+        
 
     }
 }

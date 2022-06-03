@@ -21,12 +21,15 @@ public class FieldOfView : MonoBehaviour
     public bool canSeePlayer;
     public bool canSeePlayer2;
     public bool canSeePlayer3;
-    public int detected;
+    public float detected;
+    public PlayerMovement sound;
+    public Light spotlight;
+
     void Start()
     {
        
         StartCoroutine(FOVRoutine());
-
+        spotlight.color = Color.cyan;
 
     }
     private IEnumerator FOVRoutine()
@@ -126,17 +129,30 @@ public class FieldOfView : MonoBehaviour
             canSeePlayer3 = false;
 
 
-        if (!canSeePlayer && !canSeePlayer2 && !canSeePlayer3)
-            detected = 0;
+        if (!canSeePlayer && !canSeePlayer2 && !canSeePlayer3 && detected > 0)
+            detected -= 3;
 
         if (canSeePlayer)
-            detected += 3;
+            detected += 3.0f * sound.sound;
         else if (canSeePlayer2)
-            detected += 10;
+            detected += 7.0f * sound.sound;
         else if (canSeePlayer3)
-            detected += 20;
+            detected += 35.0f * sound.sound;
 
-        if(detected >= 100)
+        if (detected > 0 && detected < 50)
+        {
+            spotlight.color = Color.yellow;
+        }
+        else if (detected > 50)
+        {
+            spotlight.color = Color.red;
+        }
+        else
+            spotlight.color = Color.cyan;
+
+       
+
+        if (detected >= 100)
         {
             Debug.Log("Przegrales");
             Cursor.lockState = CursorLockMode.None; 

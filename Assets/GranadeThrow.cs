@@ -14,6 +14,7 @@ public class GranadeThrow : MonoBehaviour
     public PickUp amount;
     public ItemHolderController iHC;
 
+
     void Start()
     {
         Physics.IgnoreCollision(granadeprefab.GetComponent<Collider>(), characterController.GetComponent<Collider>(),true);
