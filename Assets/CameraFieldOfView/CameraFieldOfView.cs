@@ -22,6 +22,8 @@ public class CameraFieldOfView : MonoBehaviour
     public GameObject ostatniaPozycja;
     private bool once = true;
     public Light spotlight;
+    public AudioClip audioDetected1;
+    public AudioClip audioDetected2;
 
     void Start()
     {
@@ -78,18 +80,24 @@ public class CameraFieldOfView : MonoBehaviour
             detected -= 3;
 
         if (canSeePlayer && detected <= 100)
-            detected += 7;
+            detected += 4;
 
-       
-        
+
+
 
         //detected color of light
         if (detected > 0 && detected < 50)
+        {
+            AudioSource.PlayClipAtPoint(audioDetected1, transform.position);
             spotlight.color = Color.yellow;
+        }
         else if (detected > 50 && detected < 100)
-            spotlight.color =Color.magenta;
+        {
+            AudioSource.PlayClipAtPoint(audioDetected2, transform.position);
+            spotlight.color = Color.magenta;
+        }
         else if (detected >= 100)
-            spotlight.color =Color.red;
+            spotlight.color = Color.red;
         else
             spotlight.color = Color.cyan;
 

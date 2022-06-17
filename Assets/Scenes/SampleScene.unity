@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1736,6 +1736,8 @@ MonoBehaviour:
   detected: 0
   ostatniaPozycja: {fileID: 0}
   spotlight: {fileID: 0}
+  audioDetected1: {fileID: 0}
+  audioDetected2: {fileID: 0}
 --- !u!195 &701968794
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1775,6 +1777,7 @@ MonoBehaviour:
   movePosition3: {fileID: 159689487}
   movePosition4: {fileID: 1700769613}
   goToPlayer: {fileID: 6900016835809742983}
+  alarm: {fileID: 0}
   kameraWidzi: {fileID: 0}
 --- !u!114 &701968796
 MonoBehaviour:
@@ -1805,6 +1808,8 @@ MonoBehaviour:
   detected: 0
   sound: {fileID: 1888576721}
   spotlight: {fileID: 1385641546}
+  audioDetected1: {fileID: 8300000, guid: 1d2d0c81780d8294cb0605ce23bb00f5, type: 3}
+  audioDetected2: {fileID: 8300000, guid: 1bd0eaa789674ac4991b1f12ab38ebaf, type: 3}
 --- !u!54 &701968797
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2870,6 +2875,8 @@ MonoBehaviour:
   detected: 0
   ostatniaPozycja: {fileID: 6900016835809742977}
   spotlight: {fileID: 2089585023}
+  audioDetected1: {fileID: 8300000, guid: 1d2d0c81780d8294cb0605ce23bb00f5, type: 3}
+  audioDetected2: {fileID: 8300000, guid: 1bd0eaa789674ac4991b1f12ab38ebaf, type: 3}
 --- !u!1001 &1282939216
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3758,6 +3765,8 @@ MonoBehaviour:
   detected: 0
   sound: {fileID: 1888576721}
   spotlight: {fileID: 1928593874}
+  audioDetected1: {fileID: 8300000, guid: 1d2d0c81780d8294cb0605ce23bb00f5, type: 3}
+  audioDetected2: {fileID: 8300000, guid: 1bd0eaa789674ac4991b1f12ab38ebaf, type: 3}
 --- !u!54 &1583049475
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3869,6 +3878,7 @@ MonoBehaviour:
   movePosition3: {fileID: 582861798}
   movePosition4: {fileID: 322561923}
   goToPlayer: {fileID: 6900016835809742983}
+  alarm: {fileID: 8300000, guid: 45ad5a4dde1470f40b8bb1e62adb7cee, type: 3}
   kameraWidzi: {fileID: 1238872097}
 --- !u!195 &1583049481
 NavMeshAgent:
