@@ -24,13 +24,14 @@ public class FieldOfView : MonoBehaviour
     public float detected;
     public PlayerMovement sound;
     public Light spotlight;
-
+    public AudioClip audioDetected1;
+    public AudioClip audioDetected2;
     void Start()
     {
        
         StartCoroutine(FOVRoutine());
         spotlight.color = Color.cyan;
-
+        
     }
     private IEnumerator FOVRoutine()
     {
@@ -141,10 +142,14 @@ public class FieldOfView : MonoBehaviour
 
         if (detected > 0 && detected < 50)
         {
+            
+            AudioSource.PlayClipAtPoint(audioDetected1, transform.position);
             spotlight.color = Color.yellow;
         }
         else if (detected > 50)
         {
+
+            AudioSource.PlayClipAtPoint(audioDetected2, transform.position);
             spotlight.color = Color.red;
         }
         else

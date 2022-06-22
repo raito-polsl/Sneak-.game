@@ -10,6 +10,7 @@ public class Patroling : MonoBehaviour
     [SerializeField] private Transform movePosition3;
     [SerializeField] private Transform movePosition4;
     [SerializeField] private Transform goToPlayer;
+    public AudioClip alarm;
 
     bool canSee;
     bool canSee2;
@@ -22,7 +23,6 @@ public class Patroling : MonoBehaviour
     public CameraFieldOfView kameraWidzi;
     private bool kameraWykryla = false;
     
-
 
 
     private NavMeshAgent navMeshAgent;
@@ -99,7 +99,8 @@ public class Patroling : MonoBehaviour
         {
             if (!ostatniaPozycja) { 
             navMeshAgent.destination = goToPlayer.position;
-            once = true;
+                
+                once = true;
         }
         }
         else if (kameraWidzi.detected < 100 && !canSee && once)
@@ -107,6 +108,7 @@ public class Patroling : MonoBehaviour
             ostatniaPozycja = new GameObject("lastSeen");
            
             ostatniaPozycja.transform.position = goToPlayer.position;
+            
             kameraWykryla = true;
             once = false;
         }
