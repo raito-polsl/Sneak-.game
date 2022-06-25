@@ -167,6 +167,9 @@ MonoBehaviour:
   movePosition2: {fileID: 0}
   movePosition3: {fileID: 0}
   movePosition4: {fileID: 0}
+  movePosition5: {fileID: 0}
+  movePosition6: {fileID: 0}
+  movePosition7: {fileID: 0}
   goToPlayer: {fileID: 0}
   alarm: {fileID: 0}
   kameraWidzi: {fileID: 0}

@@ -375,6 +375,7 @@
 "Assets/Crouch.cs"
 "Assets/DetectionCamera.cs"
 "Assets/Door.cs"
+"Assets/Drone_Guard/Animation/AnimContr.cs"
 "Assets/FieldOfView/FieldOfView.cs"
 "Assets/GranadeImpact.cs"
 "Assets/GranadeThrow.cs"
@@ -383,6 +384,8 @@
 "Assets/ItemHolderController.cs"
 "Assets/LegAim.cs"
 "Assets/LegController.cs"
+"Assets/Level3.cs"
+"Assets/Loading.cs"
 "Assets/MainMenu.cs"
 "Assets/MouseLook.cs"
 "Assets/Patroling.cs"
@@ -433,6 +436,7 @@
 "Assets/TextMesh Pro/Examples & Extras/Scripts/VertexShakeB.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/VertexZoom.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs"
+"Assets/WinGame.cs"
 -langversion:9.0
 
 /deterministic
