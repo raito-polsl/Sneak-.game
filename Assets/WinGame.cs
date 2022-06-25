@@ -10,7 +10,7 @@ public class WinGame : MonoBehaviour
         if (collision.tag == "Player")
         {
 
-
+            Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene("Win");
         }
     }
