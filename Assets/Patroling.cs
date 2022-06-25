@@ -9,6 +9,9 @@ public class Patroling : MonoBehaviour
     [SerializeField] private Transform movePosition2;
     [SerializeField] private Transform movePosition3;
     [SerializeField] private Transform movePosition4;
+    [SerializeField] private Transform movePosition5;
+    [SerializeField] private Transform movePosition6;
+    [SerializeField] private Transform movePosition7;
     [SerializeField] private Transform goToPlayer;
     public AudioClip alarm;
 
@@ -73,12 +76,26 @@ public class Patroling : MonoBehaviour
                     navMeshAgent.destination = movePosition4.position;
                     break;
                 }
-
+            case 4:
+                {
+                            navMeshAgent.destination = movePosition5.position;
+                            break;
+                }
+            case 5:
+                {
+                            navMeshAgent.destination = movePosition6.position;
+                            break;
+                }
+            case 6:
+                {
+                            navMeshAgent.destination = movePosition7.position;
+                            break;
+                }
         }
         if (enemyPosition.position.x == navMeshAgent.destination.x && enemyPosition.position.z == navMeshAgent.destination.z && count != nextPos)
         {
             count++;
-                if (count == 4)
+                if (count == 7)
                 count = 0;
             nextPos = count +1;
 
