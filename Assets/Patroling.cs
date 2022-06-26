@@ -15,6 +15,8 @@ public class Patroling : MonoBehaviour
     [SerializeField] private Transform goToPlayer;
     public AudioClip alarm;
 
+    public bool isEmp;
+
     bool canSee;
     bool canSee2;
     bool canSee3;
@@ -25,6 +27,7 @@ public class Patroling : MonoBehaviour
     private bool once = false;
     public CameraFieldOfView kameraWidzi;
     private bool kameraWykryla = false;
+    public float countdown = 0;
     
 
 
@@ -35,6 +38,7 @@ public class Patroling : MonoBehaviour
         nextPos = count + 1;
         navMeshAgent = GetComponent<NavMeshAgent>();
         canSee = false;
+        isEmp = false;
         
 
     }
@@ -46,90 +50,95 @@ public class Patroling : MonoBehaviour
             canSee = GetComponent<FieldOfView>().canSeePlayer;
             canSee2 = GetComponent<FieldOfView>().canSeePlayer2;
             canSee3 = GetComponent<FieldOfView>().canSeePlayer3;
-            
 
 
 
-        if (!kameraWykryla) { 
-        if (!canSee && !canSee2 && !canSee3)
-        {
-            navMeshAgent.speed = 3.5f;
-            switch (count)
-        { 
-            case 0:
-                {
-                    navMeshAgent.destination = movePosition1.position;
-                    break;
-                }
-            case 1:
-                {
-                    navMeshAgent.destination = movePosition2.position;
-                    break;
-                }
-            case 2:
-                {
-                    navMeshAgent.destination = movePosition3.position;
-                    break;
-                }
-            case 3:
-                {
-                    navMeshAgent.destination = movePosition4.position;
-                    break;
-                }
-            case 4:
-                {
-                            navMeshAgent.destination = movePosition5.position;
-                            break;
-                }
-            case 5:
-                {
-                            navMeshAgent.destination = movePosition6.position;
-                            break;
-                }
-            case 6:
-                {
-                            navMeshAgent.destination = movePosition7.position;
-                            break;
-                }
-        }
-        if (enemyPosition.position.x == navMeshAgent.destination.x && enemyPosition.position.z == navMeshAgent.destination.z && count != nextPos)
-        {
-            count++;
-                if (count == 7)
-                count = 0;
-            nextPos = count +1;
 
-        }
-        }
-        else
-        {
-          
-            
-            navMeshAgent.destination = goToPlayer.position;
-            navMeshAgent.speed = 0.5f; 
-        }
-        }
-        else
-            navMeshAgent.destination = ostatniaPozycja.transform.position;
+            if (!kameraWykryla)
+            {
+                if (!canSee && !canSee2 && !canSee3)
+                {
+                if (isEmp) { navMeshAgent.speed = 0f; }
+                else { navMeshAgent.speed = 3.5f; }
+                    switch (count)
+                    {
+                        case 0:
+                            {
+                                navMeshAgent.destination = movePosition1.position;
+                                break;
+                            }
+                        case 1:
+                            {
+                                navMeshAgent.destination = movePosition2.position;
+                                break;
+                            }
+                        case 2:
+                            {
+                                navMeshAgent.destination = movePosition3.position;
+                                break;
+                            }
+                        case 3:
+                            {
+                                navMeshAgent.destination = movePosition4.position;
+                                break;
+                            }
+                        case 4:
+                            {
+                                navMeshAgent.destination = movePosition5.position;
+                                break;
+                            }
+                        case 5:
+                            {
+                                navMeshAgent.destination = movePosition6.position;
+                                break;
+                            }
+                        case 6:
+                            {
+                                navMeshAgent.destination = movePosition7.position;
+                                break;
+                            }
+                    }
+                    if (enemyPosition.position.x == navMeshAgent.destination.x && enemyPosition.position.z == navMeshAgent.destination.z && count != nextPos)
+                    {
+                        count++;
+                        if (count == 7)
+                            count = 0;
+                        nextPos = count + 1;
 
-        if (kameraWidzi.detected >= 100 && kameraWidzi.canSeePlayer)
-        {
-            if (!ostatniaPozycja) { 
-            navMeshAgent.destination = goToPlayer.position;
-                
-                once = true;
-        }
-        }
-        else if (kameraWidzi.detected < 100 && !canSee && once)
-        {
-            ostatniaPozycja = new GameObject("lastSeen");
-           
-            ostatniaPozycja.transform.position = goToPlayer.position;
-            
-            kameraWykryla = true;
-            once = false;
-        }
-        
+                    }
+                }
+                else
+                {
 
+
+                    navMeshAgent.destination = goToPlayer.position;
+                    navMeshAgent.speed = 0.5f;
+                }
+            }
+            else
+                navMeshAgent.destination = ostatniaPozycja.transform.position;
+
+            if (kameraWidzi.detected >= 100 && kameraWidzi.canSeePlayer)
+            {
+                if (!ostatniaPozycja)
+                {
+                    navMeshAgent.destination = goToPlayer.position;
+
+                    once = true;
+                }
+            }
+            else if (kameraWidzi.detected < 100 && !canSee && once)
+            {
+                ostatniaPozycja = new GameObject("lastSeen");
+
+                ostatniaPozycja.transform.position = goToPlayer.position;
+
+                kameraWykryla = true;
+                once = false;
+            }
+        if (isEmp) {
+            countdown -= Time.deltaTime;
+            if (countdown <= 0) { isEmp = false; }
+        }
     }
 }
