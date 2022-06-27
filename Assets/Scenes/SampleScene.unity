@@ -1835,7 +1835,12 @@ MonoBehaviour:
   movePosition4: {fileID: 1700769613}
   goToPlayer: {fileID: 6900016835809742983}
   alarm: {fileID: 8300000, guid: 45ad5a4dde1470f40b8bb1e62adb7cee, type: 3}
+  searching: {fileID: 8300000, guid: 8f3d1d9df12526d4c854ffdffdcb47da, type: 3}
   kameraWidzi: {fileID: 945285740}
+  lewo: 0
+  "\u015Brodek": 0
+  prawo: 0
+  spotlight: {fileID: 1385641546}
 --- !u!114 &701968796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4098,7 +4103,12 @@ MonoBehaviour:
   movePosition4: {fileID: 322561923}
   goToPlayer: {fileID: 6900016835809742983}
   alarm: {fileID: 8300000, guid: 45ad5a4dde1470f40b8bb1e62adb7cee, type: 3}
+  searching: {fileID: 8300000, guid: 8f3d1d9df12526d4c854ffdffdcb47da, type: 3}
   kameraWidzi: {fileID: 1238872097}
+  lewo: 0
+  "\u015Brodek": 0
+  prawo: 0
+  spotlight: {fileID: 1928593874}
 --- !u!195 &1583049481
 NavMeshAgent:
   m_ObjectHideFlags: 0

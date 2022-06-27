@@ -140,17 +140,20 @@ public class FieldOfView : MonoBehaviour
         else if (canSeePlayer3)
             detected += 35.0f * sound.sound;
 
+        if (detected > 0)
+        {
+            spotlight.color = new Color(1f, 1f - (detected / 100), 0.0f, 0.4f);
+        }
+
         if (detected > 0 && detected < 50)
         {
             
             AudioSource.PlayClipAtPoint(audioDetected1, transform.position);
-            spotlight.color = Color.yellow;
         }
         else if (detected > 50)
         {
 
             AudioSource.PlayClipAtPoint(audioDetected2, transform.position);
-            spotlight.color = Color.red;
         }
         else
             spotlight.color = Color.cyan;
