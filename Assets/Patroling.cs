@@ -24,15 +24,14 @@ public class Patroling : MonoBehaviour
     public CameraFieldOfView kameraWidzi;
     private bool kameraWykryla = false;
     private bool pocz¹tkowyKatWidzenia = false;
-    private int licz=0;
+    [SerializeField] private int licz=0;
     public bool lewo;
-    public bool œrodek;
+    public bool srodek;
     public bool prawo;
     public Light spotlight;
 
     Vector3 start ;
-    Quaternion right ;
-    Quaternion left; 
+    
 
 
     private NavMeshAgent navMeshAgent;
@@ -71,9 +70,11 @@ public class Patroling : MonoBehaviour
 
         if (!kameraWykryla)
         {
+            Destroy(ostatniaPozycja);
             if (!canSee && !canSee2 && !canSee3)
             {
                 navMeshAgent.speed = 3.5f;
+                pocz¹tkowyKatWidzenia = false;
                 switch (count)
                 {
                     case 0:
@@ -124,68 +125,11 @@ public class Patroling : MonoBehaviour
                 if (pocz¹tkowyKatWidzenia == false)
                 {
                     start = enemyPosition.rotation.eulerAngles;
-                    //start = enemyPosition.rotation;
-                    //left = start * Quaternion.Euler(0, -45, 0);
-                    //right = start * Quaternion.Euler(0, 45, 0);
                     pocz¹tkowyKatWidzenia = true;
                 }
 
 
-
-                //if (enemyPosition.rotation == left)
-                //    licz = 1;
-                //else if (enemyPosition.rotation == right)
-                //    licz = 2;
-                if(pocz¹tkowyKatWidzenia == true)
-                {  
-                if (licz == 0 && enemyPosition.rotation.eulerAngles.y <= start.y - 90)
-                    licz++;
-                if (licz == 1 && enemyPosition.rotation.eulerAngles.y >= start.y + 60)
-                    licz++;
-                if(licz == 2 && enemyPosition.rotation.eulerAngles.y <= start.y)
-                {
-                    licz = 0;
-                    pocz¹tkowyKatWidzenia = false;
-                    kameraWykryla = false;
-                    Destroy(ostatniaPozycja);
-                }
-                
-
-                switch (licz)
-                {
-                    case 0:
-                        {
-                            //      StartCoroutine(Rotatee(enemyPosition, start, left, 1.0f));
-                            //       Debug.Log("lewo");
-                            enemyPosition.transform.Rotate(0, -0.5f, 0);
-                            lewo = true;
-                            break;
-                        }
-                    case 1:
-                        {
-                            //       StartCoroutine(Rotatee(enemyPosition, left, right, 1.0f));
-                            //        Debug.Log("prawo");
-                            enemyPosition.transform.Rotate(0, 1f, 0);
-                            lewo = false;
-                            prawo = true;
-                            break;
-                        }
-                    case 2:
-                        {
-                            //         StartCoroutine(Rotatee(enemyPosition, right, start, 1.0f));
-                            //          Debug.Log("srodek");
-
-                            enemyPosition.transform.Rotate(0, -0.5f, 0);
-                            prawo = false;
-                            œrodek = true;
-                            break;
-                        }
-
-                }
-                }
-
-
-                float[] odleglosc = new float[4] 
+                float[] odleglosc = new float[4]
                 {   Mathf.Sqrt(Mathf.Pow(movePosition1.position.x - enemyPosition.position.x,2) + Mathf.Pow(movePosition1.position.z - enemyPosition.position.z,2)),
                     Mathf.Sqrt(Mathf.Pow(movePosition2.position.x - enemyPosition.position.x,2) + Mathf.Pow(movePosition2.position.z - enemyPosition.position.z,2)),
                     Mathf.Sqrt(Mathf.Pow(movePosition3.position.x - enemyPosition.position.x,2) + Mathf.Pow(movePosition3.position.z - enemyPosition.position.z,2)),
@@ -194,11 +138,61 @@ public class Patroling : MonoBehaviour
 
                 float minValue = Mathf.Min(odleglosc);
 
-                for(int i = 0; i < odleglosc.Length;i++)
+                for (int i = 0; i < odleglosc.Length; i++)
                 {
-                    if(minValue==odleglosc[i])
+                    if (minValue == odleglosc[i])
                         count = i;
                 }
+
+                if (pocz¹tkowyKatWidzenia == true)
+                {  
+
+                    switch (licz)
+                    {
+                        case 0:
+                            {
+                                enemyPosition.transform.Rotate(0, -0.5f, 0);
+                                lewo = true;
+                                break;
+                            }
+                        case 1:
+                            {
+                                enemyPosition.transform.Rotate(0, 1f, 0);
+                                lewo = false;
+                                prawo = true;
+                                break;
+                            }
+                        case 2:
+                            {
+                                enemyPosition.transform.Rotate(0, -0.5f, 0);
+                                prawo = false;
+                                srodek = true;
+                                break;
+                            }
+
+                    }
+
+
+                if (licz == 0 && enemyPosition.rotation.eulerAngles.y <= start.y - 90 && lewo == true)
+                    licz++;
+                if (licz == 1 && enemyPosition.rotation.eulerAngles.y >= start.y + 60 && prawo == true)
+                    licz++;
+                if(licz == 2 && enemyPosition.rotation.eulerAngles.y <= start.y)
+                {
+                    licz = 0;
+                        
+                    
+                    
+                    srodek = false;
+                    kameraWykryla = false;
+                    }
+
+
+                    
+                }
+
+
+                
                
             }
         }
