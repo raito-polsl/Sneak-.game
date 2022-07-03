@@ -13,29 +13,29 @@ public class Patroling : MonoBehaviour
     public AudioClip alarm;
     public AudioClip searching;
 
-    bool canSee;
-    bool canSee2;
-    bool canSee3;
-    private Transform enemyPosition;
-    private int count = 0;
-    private int nextPos;
-    private GameObject ostatniaPozycja;
-    private bool once = false;
+    public bool canSee;
+    public bool canSee2;
+    public bool canSee3;
+    public Transform enemyPosition;
+    public int count = 0;
+    public int nextPos;
+    public GameObject ostatniaPozycja;
+    public bool once = false;
     public CameraFieldOfView kameraWidzi;
-    private bool kameraWykryla = false;
-    private bool pocz¹tkowyKatWidzenia = false;
+    public bool kameraWykryla = false;
+    public bool poczatkowyKatWidzenia = false;
     [SerializeField] private int licz=0;
     public bool lewo;
     public bool srodek;
     public bool prawo;
     public Light spotlight;
 
-    Vector3 start ;
+    public Vector3 start ;
     
 
 
     private NavMeshAgent navMeshAgent;
-    IEnumerator Rotatee(Transform self, Quaternion from, Quaternion to, float duration)
+/*    IEnumerator Rotatee(Transform self, Quaternion from, Quaternion to, float duration)
     {
 
         for (float t = 0; t < 1f; t += Time.deltaTime / duration)
@@ -48,7 +48,7 @@ public class Patroling : MonoBehaviour
 
         // Ensure we finish exactly at the destination orientation.
         self.rotation = to;
-    }
+    }*/
     private void Start()
     {
         nextPos = count + 1;
@@ -74,7 +74,7 @@ public class Patroling : MonoBehaviour
             if (!canSee && !canSee2 && !canSee3)
             {
                 navMeshAgent.speed = 3.5f;
-                pocz¹tkowyKatWidzenia = false;
+                poczatkowyKatWidzenia = false;
                 switch (count)
                 {
                     case 0:
@@ -122,10 +122,10 @@ public class Patroling : MonoBehaviour
             {
                 AudioSource.PlayClipAtPoint(searching, transform.position);
                 spotlight.color = new Color(1.0f, 0.4f, 0.0f, 0.3f);
-                if (pocz¹tkowyKatWidzenia == false)
+                if (poczatkowyKatWidzenia == false)
                 {
                     start = enemyPosition.rotation.eulerAngles;
-                    pocz¹tkowyKatWidzenia = true;
+                    poczatkowyKatWidzenia = true;
                 }
 
 
@@ -144,7 +144,7 @@ public class Patroling : MonoBehaviour
                         count = i;
                 }
 
-                if (pocz¹tkowyKatWidzenia == true)
+                if (poczatkowyKatWidzenia == true)
                 {  
 
                     switch (licz)
@@ -153,6 +153,9 @@ public class Patroling : MonoBehaviour
                             {
                                 enemyPosition.transform.Rotate(0, -0.5f, 0);
                                 lewo = true;
+                                if (enemyPosition.rotation.eulerAngles.y <= start.y - 90) { 
+                                    licz++;
+                                }
                                 break;
                             }
                         case 1:
@@ -160,6 +163,10 @@ public class Patroling : MonoBehaviour
                                 enemyPosition.transform.Rotate(0, 1f, 0);
                                 lewo = false;
                                 prawo = true;
+                                if (enemyPosition.rotation.eulerAngles.y >= start.y + 60)
+                                {
+                                    licz++;
+                                }
                                 break;
                             }
                         case 2:
@@ -167,13 +174,24 @@ public class Patroling : MonoBehaviour
                                 enemyPosition.transform.Rotate(0, -0.5f, 0);
                                 prawo = false;
                                 srodek = true;
+                                if (enemyPosition.rotation.eulerAngles.y <= start.y)
+                                {
+                                    licz = 0;
+
+
+
+                                    srodek = false;
+                                    start = new Vector3(0f, 0f, 0f);
+                                    kameraWykryla = false;
+
+                                }
                                 break;
                             }
 
                     }
 
 
-                if (licz == 0 && enemyPosition.rotation.eulerAngles.y <= start.y - 90 && lewo == true)
+                /*if (licz == 0 && enemyPosition.rotation.eulerAngles.y <= start.y - 90 && lewo == true)
                     licz++;
                 if (licz == 1 && enemyPosition.rotation.eulerAngles.y >= start.y + 60 && prawo == true)
                     licz++;
@@ -184,8 +202,10 @@ public class Patroling : MonoBehaviour
                     
                     
                     srodek = false;
+                    start = new Vector3(0f, 0f, 0f);
                     kameraWykryla = false;
-                    }
+                    
+                    }*/
 
 
                     
