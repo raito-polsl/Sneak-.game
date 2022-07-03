@@ -9,7 +9,7 @@ public class Patroling : MonoBehaviour
     [SerializeField] private Transform movePosition2;
     [SerializeField] private Transform movePosition3;
     [SerializeField] private Transform movePosition4;
-    [SerializeField] private Transform goToPlayer;
+    [SerializeField] public Transform goToPlayer;
     public AudioClip alarm;
     public AudioClip searching;
 
@@ -34,21 +34,8 @@ public class Patroling : MonoBehaviour
     
 
 
-    private NavMeshAgent navMeshAgent;
-/*    IEnumerator Rotatee(Transform self, Quaternion from, Quaternion to, float duration)
-    {
+    public NavMeshAgent navMeshAgent;
 
-        for (float t = 0; t < 1f; t += Time.deltaTime / duration)
-        {
-            // Rotate to match our current progress between from and to.
-            //self.Rotate(Quaternion.Slerp(from, to, t)) = Quaternion.Slerp(from, to, t);
-            // Wait one frame before looping again.
-            yield return null;
-        }
-
-        // Ensure we finish exactly at the destination orientation.
-        self.rotation = to;
-    }*/
     private void Start()
     {
         nextPos = count + 1;
@@ -64,9 +51,6 @@ public class Patroling : MonoBehaviour
             canSee = GetComponent<FieldOfView>().canSeePlayer;
             canSee2 = GetComponent<FieldOfView>().canSeePlayer2;
             canSee3 = GetComponent<FieldOfView>().canSeePlayer3;
-
-
-
 
         if (!kameraWykryla)
         {
@@ -117,7 +101,10 @@ public class Patroling : MonoBehaviour
             }
         }
         else
-        { navMeshAgent.destination = ostatniaPozycja.transform.position;
+        { 
+            navMeshAgent.destination = ostatniaPozycja.transform.position;
+            
+           
             if (enemyPosition.position.x == navMeshAgent.destination.x && enemyPosition.position.z == navMeshAgent.destination.z && count != nextPos)
             {
                 AudioSource.PlayClipAtPoint(searching, transform.position);
@@ -190,22 +177,6 @@ public class Patroling : MonoBehaviour
 
                     }
 
-
-                /*if (licz == 0 && enemyPosition.rotation.eulerAngles.y <= start.y - 90 && lewo == true)
-                    licz++;
-                if (licz == 1 && enemyPosition.rotation.eulerAngles.y >= start.y + 60 && prawo == true)
-                    licz++;
-                if(licz == 2 && enemyPosition.rotation.eulerAngles.y <= start.y)
-                {
-                    licz = 0;
-                        
-                    
-                    
-                    srodek = false;
-                    start = new Vector3(0f, 0f, 0f);
-                    kameraWykryla = false;
-                    
-                    }*/
 
 
                     

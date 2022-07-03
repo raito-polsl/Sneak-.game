@@ -7,6 +7,7 @@ TagManager:
   - item
   - bottle
   - granade
+  - Enemy
   layers:
   - Default
   - TransparentFX

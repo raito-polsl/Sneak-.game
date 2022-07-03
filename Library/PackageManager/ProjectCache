@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637924518276136018
+      ticks: 637924552464303188
     m_Hash: 3216311116
   m_LockFileStatus:
     m_FilePath: C:/Users/qetzi/Documents/GitHub/Sneak-.game/Packages/packages-lock.json
@@ -13,8 +13,8 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637924521479692305
-    m_Hash: 2291097405
+      ticks: 637924552464343199
+    m_Hash: 591434134
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
