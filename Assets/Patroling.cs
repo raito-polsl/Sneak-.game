@@ -30,8 +30,22 @@ public class Patroling : MonoBehaviour
     public bool prawo;
     public Light spotlight;
 
+
     public Vector3 start ;
-    
+
+    public Quaternion startQ;
+    public Quaternion LQ;
+    public Quaternion RQ;
+    public Quaternion tempP;
+    public Quaternion tempK;
+    public float l;
+    public float r;
+    public float s;
+    public float t1i;
+    public float t2i;
+
+    public bool raz = false;
+    public bool dwa = true;
 
 
     public NavMeshAgent navMeshAgent;
@@ -111,7 +125,11 @@ public class Patroling : MonoBehaviour
                 spotlight.color = new Color(1.0f, 0.4f, 0.0f, 0.3f);
                 if (poczatkowyKatWidzenia == false)
                 {
-                    start = enemyPosition.rotation.eulerAngles;
+                    start = enemyPosition.eulerAngles;
+                    startQ = enemyPosition.rotation;
+                    LQ = enemyPosition.rotation * Quaternion.Euler(0, -45, 0);
+                    RQ = enemyPosition.rotation * Quaternion.Euler(0, 45, 0);
+
                     poczatkowyKatWidzenia = true;
                 }
 
@@ -129,62 +147,196 @@ public class Patroling : MonoBehaviour
                 {
                     if (minValue == odleglosc[i])
                         count = i;
+                        nextPos = count + 1;
                 }
 
                 if (poczatkowyKatWidzenia == true)
-                {  
+                {
 
                     switch (licz)
                     {
                         case 0:
                             {
-                                enemyPosition.transform.Rotate(0, -0.5f, 0);
-                                lewo = true;
-                                if (enemyPosition.rotation.eulerAngles.y <= start.y - 90) { 
-                                    licz++;
+                                if (LQ.y > RQ.y && start.y<45)
+                                {
+                                    tempP = new Quaternion(enemyPosition.rotation.x, 0, enemyPosition.rotation.z, 1);
+                                    tempK = new Quaternion(enemyPosition.rotation.x, 360 - (45 - startQ.y), enemyPosition.rotation.z, 1);
+                                    if (raz == true)
+                                    {
+                                        enemyPosition.rotation = Quaternion.Slerp(startQ, tempP, t1i += 0.01f);
+                                        if (t1i == 1)
+                                        {
+                                            raz = false;
+                                            dwa = true;
+                                        }
+                                    }
+                                    if (dwa == true)
+                                    {
+                                        enemyPosition.rotation = Quaternion.Slerp(tempP, tempK, t2i += 0.01f);
+                                        if (t2i == 1)
+                                        {
+                                            dwa = false;
+                                            raz = true;
+                                            t1i = 0;
+                                            t2i = 0;
+                                            licz++;
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    enemyPosition.rotation = Quaternion.Slerp(startQ, LQ, l += 0.01f);
+                                    if (l >= 1)
+                                        licz++;
                                 }
                                 break;
                             }
                         case 1:
                             {
-                                enemyPosition.transform.Rotate(0, 1f, 0);
-                                lewo = false;
-                                prawo = true;
-                                if (enemyPosition.rotation.eulerAngles.y >= start.y + 60)
+                                l = 0;
+                                if (LQ.y > RQ.y && start.y > 315)
                                 {
+                                    tempP = new Quaternion(enemyPosition.rotation.x, 0, enemyPosition.rotation.z, 1);
+                                    tempK = new Quaternion(enemyPosition.rotation.x, (45 - startQ.y) - 360, enemyPosition.rotation.z, 1);
+                                    if (raz == true)
+                                    {
+                                        enemyPosition.rotation = Quaternion.Slerp(startQ, tempP, t1i += 0.01f);
+                                        if (t1i == 1)
+                                        {
+                                            raz = false;
+                                            dwa = true;
+                                        }
+                                    }
+                                    if (dwa == true)
+                                    {
+                                        enemyPosition.rotation = Quaternion.Slerp(tempP, tempK, t2i += 0.01f);
+                                        if (t2i == 1)
+                                        {
+                                            dwa = false;
+                                            raz = true;
+                                            t1i = 0;
+                                            t2i = 0;
+                                            licz++;
+                                        }
+                                    }
+                                }
+                                else
+                                { 
+                                    enemyPosition.rotation = Quaternion.Slerp(LQ, RQ, r += 0.005f);
+                                if (r >= 1)
                                     licz++;
                                 }
                                 break;
                             }
                         case 2:
                             {
-                                enemyPosition.transform.Rotate(0, -0.5f, 0);
-                                prawo = false;
-                                srodek = true;
-                                if (enemyPosition.rotation.eulerAngles.y <= start.y)
+                                r = 0;
+
+                                if (LQ.y > RQ.y && start.y > 315)
                                 {
-                                    licz = 0;
-
-
-
+                                    tempP = new Quaternion(enemyPosition.rotation.x, 0, enemyPosition.rotation.z, 1);
+                                    tempK = new Quaternion(enemyPosition.rotation.x, (45 - startQ.y) - 360, enemyPosition.rotation.z, 1);
+                                    if (raz == true)
+                                    {
+                                        enemyPosition.rotation = Quaternion.Slerp(tempK, tempP, t1i += 0.01f);
+                                        if (t1i == 1)
+                                        {
+                                            raz = false;
+                                            dwa = true;
+                                        }
+                                    }
+                                    if (dwa == true)
+                                    {
+                                        enemyPosition.rotation = Quaternion.Slerp(tempP, startQ, t2i += 0.01f);
+                                        if (t2i == 1)
+                                        {   
+                                            dwa = false;
+                                            raz = true;
+                                            t1i = 0;
+                                            t2i = 0;
+                                            licz++;
+                                        }
+                                    }
+                                }
+                                else
+                                { 
+                                    enemyPosition.rotation = Quaternion.Slerp(RQ, startQ, s += 0.01f);
+                                if (s >= 1)
+                                {
+                                    licz=0;
                                     srodek = false;
-                                    start = new Vector3(0f, 0f, 0f);
+                                    start = new Vector3(0, 0, 0);
+                                    s = 0;
                                     kameraWykryla = false;
-
+                                }
                                 }
                                 break;
                             }
+                    }
+
+                            //switch (licz)
+                            //{
+                            //    case 0:
+                            //        {
+                            //            enemyPosition.transform.Rotate(0, -0.5f, 0);
+
+                            //            lewo = true;
+                            //            if(enemyPosition.transform.rotation.eulerAngles.y-90 )
+
+                            //            if (enemyPosition.transform.rotation.eulerAngles.y <= start.y-90f) { 
+                            //                licz++;
+                            //            }
+                            //            break;
+                            //        }
+                            //    case 1:
+                            //        {
+                            //            enemyPosition.transform.Rotate(0, 1f, 0);
+                            //            lewo = false;
+                            //            prawo = true;
+                            //            if (enemyPosition.transform.rotation.eulerAngles.y >= start.y+60f)
+                            //            {
+                            //                licz++;
+                            //            }
+                            //            break;
+                            //        }
+                            //    case 2:
+                            //        {
+                            //            enemyPosition.transform.Rotate(0, -0.5f, 0);
+                            //            prawo = false;
+                            //            srodek = true;
+                            //            if (enemyPosition.transform.rotation.eulerAngles.y <= start.y)
+                            //            {
+                            //                licz = 0;
+
+
+
+                            //                srodek = false;
+                            //                start = new Vector3(0,0,0);
+                            //                kameraWykryla = false;
+
+                            //            }
+                            //            break;
+                            //        }
+
+                            //}
+
+
+
 
                     }
 
-
-
-                    
+                if (canSee || canSee2 || canSee3)
+                {
+                    licz = 0;
+                    srodek = false;
+                    start = new Vector3(0, 0, 0);
+                    kameraWykryla = false;
                 }
 
 
-                
-               
+
+
+
             }
         }
 

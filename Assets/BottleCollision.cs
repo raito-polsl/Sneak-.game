@@ -6,11 +6,12 @@ public class BottleCollision : MonoBehaviour
 {
     public GameObject shardGameObject;
     public GameObject[] enemylist;
-    public float radius = 20f;
+    public float radius = 30f;
     private void OnCollisionEnter(Collision collision)
     {
         GameObject e = Instantiate(shardGameObject);
         e.transform.position = transform.position;
+
 
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -25,10 +26,11 @@ public class BottleCollision : MonoBehaviour
                     if (Vector3.Distance(transform.position, nearbyObject.transform.position) < radius)
                     {
                         Patroling p = nearbyObject.GetComponent<Patroling>();
-                        p.ostatniaPozycja = new GameObject("last123n");
-                        p.ostatniaPozycja.transform.position =transform.position;
+                        p.ostatniaPozycja = new GameObject("lastHear");
+                        p.ostatniaPozycja.transform.position = transform.position;
                         p.kameraWykryla = true;
-                        Debug.Log(transform.position);
+                        Debug.Log("siema");
+                        
 
                     }
                 }

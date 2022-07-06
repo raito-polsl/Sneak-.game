@@ -20,7 +20,6 @@ public class CameraFieldOfView : MonoBehaviour
     public bool canSeePlayer;
     public float detected;
     public GameObject ostatniaPozycja;
-    private bool once = true;
     public Light spotlight;
     public AudioClip audioDetected1;
     public AudioClip audioDetected2;
