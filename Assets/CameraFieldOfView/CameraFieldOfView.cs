@@ -82,9 +82,9 @@ public class CameraFieldOfView : MonoBehaviour
             detected += 4;
 
 
-        if(detected>0)
+        if (detected > 0)
         {
-            spotlight.color = new Color(1f, 1f-(detected/100), 0.0f, 0.4f);
+            spotlight.color = new Color(1f, 1f - (detected / 100), 0.0f, 0.4f);
         }
 
         //detected color of light

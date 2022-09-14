@@ -26,11 +26,32 @@ public class FieldOfView : MonoBehaviour
     public Light spotlight;
     public AudioClip audioDetected1;
     public AudioClip audioDetected2;
+
+    public bool isEmp;
+    public float countdown;
     void Start()
     {
        
         StartCoroutine(FOVRoutine());
         spotlight.color = Color.cyan;
+        
+    }
+    void Update()
+    {
+        if (!isEmp)
+        {
+            radius = 40f;
+            radius2 = 25f;
+            radius3 = 10f;
+        }
+            if (isEmp)
+            {
+                radius = 0f;
+                radius2 = 0f;
+                radius3 = 0f;
+                countdown -= Time.deltaTime;
+                if (countdown <= 0) { isEmp = false; }
+            }
         
     }
     private IEnumerator FOVRoutine()
@@ -133,27 +154,26 @@ public class FieldOfView : MonoBehaviour
         if (!canSeePlayer && !canSeePlayer2 && !canSeePlayer3 && detected > 0)
             detected -= 3;
 
-        if (canSeePlayer)
-            detected += 3.0f * sound.sound;
-        else if (canSeePlayer2)
-            detected += 7.0f * sound.sound;
-        else if (canSeePlayer3)
-            detected += 35.0f * sound.sound;
 
-        if (detected > 0)
-        {
-            spotlight.color = new Color(1f, 1f - (detected / 100), 0.0f, 0.4f);
-        }
+            if (canSeePlayer)
+                detected += 3.0f * sound.sound;
+            else if (canSeePlayer2)
+                detected += 7.0f * sound.sound;
+            else if (canSeePlayer3)
+                detected += 35.0f * sound.sound;
+        
 
         if (detected > 0 && detected < 50)
         {
             
             AudioSource.PlayClipAtPoint(audioDetected1, transform.position);
+            spotlight.color = Color.yellow;
         }
         else if (detected > 50)
         {
 
             AudioSource.PlayClipAtPoint(audioDetected2, transform.position);
+            spotlight.color = Color.red;
         }
         else
             spotlight.color = Color.cyan;

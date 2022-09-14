@@ -30,7 +30,7 @@ public class BottleCollision : MonoBehaviour
                         p.ostatniaPozycja.transform.position = transform.position;
                         p.kameraWykryla = true;
                         Debug.Log("siema");
-                        
+
 
                     }
                 }
